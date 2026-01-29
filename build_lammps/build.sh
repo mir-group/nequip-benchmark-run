@@ -32,7 +32,7 @@ cmake \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_CXX_COMPILER=$(pwd)/lib/kokkos/bin/nvcc_wrapper \
     -D CMAKE_CXX_STANDARD=20 \
-    -D CMAKE_PREFIX_PATH=$(pwd)/../pytorch \
+    -D CMAKE_PREFIX_PATH=`python -c 'import torch;print(torch.utils.cmake_prefix_path)'` \
     -D MKL_INCLUDE_DIR=/tmp \
     -D CAFFE2_USE_CUDNN=ON \
     -D BUILD_SHARED_LIBS=ON \
