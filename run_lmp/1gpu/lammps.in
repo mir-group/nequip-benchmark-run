@@ -1,0 +1,33 @@
+variable LX index 1
+variable LY index 1
+variable LZ index 1
+variable seed index 401
+
+boundary p p p
+units metal
+
+# Update with path to nequip model
+pair_style mliap unified /pscratch/sd/d/demirand/nesap/nequip-benchmark-run/models/NequIP-OAM-L-OEQ-a100.nequip.lmp.pt 0
+atom_style atomic
+read_data Si_equil.data
+
+replicate ${LX} ${LY} ${LZ}
+
+pair_coeff	* * Si
+
+timestep 0.001
+
+# Generate velocities at T = 300 with seed 12345 with rotations, following a gaussian distribution
+velocity all create 300.0 ${seed} rot yes dist gaussian
+fix 1 all nvt/kk temp 300.0 300.0 0.050
+
+run 10
+
+reset_timestep 0
+
+# Set thermodynamics output settings:
+thermo_style custom step temp vol pe press pxx pyy pzz pxy pyz pxz spcpu
+thermo 100
+
+run 10
+write_data data.Si_equil
