@@ -1,0 +1,19 @@
+units         metal 
+boundary      p p p
+atom_style    atomic
+atom_modify   map yes
+newton        on
+
+read_data     ../structure/structure_conventional.data
+replicate     6 6 6
+
+pair_style    mliap unified ../../models/compiled_models/NequIP-L-nocompile-a100.nequip.lmp.pt 0
+pair_coeff    * * Li P S Cl
+velocity      all create 300.0 123 rot yes dist gaussian
+
+timestep      0.001
+thermo        100
+
+fix           f1 all nve
+run           500
+run           2000
