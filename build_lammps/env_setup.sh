@@ -22,11 +22,6 @@ git clone https://github.com/mir-group/nequip.git
 cd nequip
 pip install -e .
 
-# Public Allegro
-git clone https://github.com/mir-group/allegro.git
-cd allegro 
-pip install -e .
-
 # LAMMPS: Release 10 December 2025
 git clone https://github.com/lammps/lammps.git
 
