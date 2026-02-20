@@ -22,7 +22,7 @@ module load cudnn/9.5.0
 module list
 
 # Activate micromamba env
-micromamba activate mliap_benchmark_2025
+micromamba activate ../build_lammps/env
 
 # Get model zip 
 wget https://zenodo.org/api/records/16980200/files/NequIP-OAM-L-0.1.nequip.zip/content \
