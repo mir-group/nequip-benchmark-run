@@ -5,8 +5,8 @@
 #SBATCH --gres=gpu:1
 #SBATCH -t 00:50:00
 #SBATCH --mem=75GB
-#SBATCH -o logs/%j.err
-#SBATCH -e logs/%j.out
+#SBATCH -e logs/%j.err
+#SBATCH -o logs/%j.out
 #SBATCH --account m4297
 #SBATCH -C gpu
 #SBATCH -q regular
